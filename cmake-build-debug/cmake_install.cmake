@@ -1,4 +1,4 @@
-# Install script for directory: /home/haocheng/CLionProjects/pcmattex
+# Install script for directory: /home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/haocheng/CLionProjects/pcmattex/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

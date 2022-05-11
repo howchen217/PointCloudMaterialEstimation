@@ -1,5 +1,24 @@
-/home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/haocheng/CLion-2022.1/clion-2022.1/bin/ninja/linux/ninja -G Ninja -S /home/haocheng/CLionProjects/pcmattex -B /home/haocheng/CLionProjects/pcmattex/cmake-build-debug
+/home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/haocheng/CLion-2022.1/clion-2022.1/bin/ninja/linux/ninja -G Ninja -S /home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture -B /home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture/cmake-build-debug
+-- The C compiler identification is GNU 9.4.0
+-- The CXX compiler identification is GNU 9.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Checking for module 'eigen3'
+--   Found eigen3, version 3.3.7
+-- Found Eigen: /usr/include/eigen3 (Required is at least version "3.1") 
 -- Eigen found (include: /usr/include/eigen3, version: 3.3.7)
+-- Found Boost: /usr/include (found suitable version "1.71.0", minimum required is "1.55.0") found components: system filesystem date_time iostreams regex 
+-- Checking for module 'flann'
+--   Found flann, version 1.9.1
+-- Found FLANN: /usr/lib/x86_64-linux-gnu/libflann_cpp.so  
 -- The imported target "vtkParseOGLExt" references the file
    "/usr/bin/vtkParseOGLExt-7.1"
 but this file does not exist.  Possible reasons include:
@@ -124,6 +143,7 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 -- Could NOT find USB_10 (missing: USB_10_LIBRARY USB_10_INCLUDE_DIR) 
 -- OpenNI 2 disabled because libusb-1.0 not found.
 ** WARNING ** visualization features related to openni2 will be disabled
+-- Found Qhull: optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so  
 -- QHULL found (include: /usr/include, lib: optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so)
 -- Checking for module 'libusb-1.0'
 --   No package 'libusb-1.0' found
@@ -154,6 +174,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_COMMON: /usr/lib/x86_64-linux-gnu/libpcl_common.so  
 -- looking for PCL_KDTREE
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args` (PCL_KDTREE)
@@ -165,6 +186,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_KDTREE: /usr/lib/x86_64-linux-gnu/libpcl_kdtree.so  
 -- looking for PCL_OCTREE
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args` (PCL_OCTREE)
@@ -176,6 +198,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_OCTREE: /usr/lib/x86_64-linux-gnu/libpcl_octree.so  
 -- looking for PCL_SEARCH
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args` (PCL_SEARCH)
@@ -187,6 +210,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_SEARCH: /usr/lib/x86_64-linux-gnu/libpcl_search.so  
 -- looking for PCL_SAMPLE_CONSENSUS
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -199,6 +223,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_SAMPLE_CONSENSUS: /usr/lib/x86_64-linux-gnu/libpcl_sample_consensus.so  
 -- looking for PCL_FILTERS
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -210,6 +235,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_FILTERS: /usr/lib/x86_64-linux-gnu/libpcl_filters.so  
 -- looking for PCL_2D
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args` (PCL_2D)
@@ -221,6 +247,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_2D: /usr/include/pcl-1.10  
 -- looking for PCL_GEOMETRY
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -232,6 +259,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_GEOMETRY: /usr/include/pcl-1.10  
 -- looking for PCL_IO
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args` (PCL_IO)
@@ -243,6 +271,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_IO: /usr/lib/x86_64-linux-gnu/libpcl_io.so  
 -- looking for PCL_FEATURES
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -254,6 +283,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_FEATURES: /usr/lib/x86_64-linux-gnu/libpcl_features.so  
 -- looking for PCL_ML
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args` (PCL_ML)
@@ -265,6 +295,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_ML: /usr/lib/x86_64-linux-gnu/libpcl_ml.so  
 -- looking for PCL_SEGMENTATION
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -276,6 +307,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_SEGMENTATION: /usr/lib/x86_64-linux-gnu/libpcl_segmentation.so  
 -- looking for PCL_VISUALIZATION
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -287,6 +319,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_VISUALIZATION: /usr/lib/x86_64-linux-gnu/libpcl_visualization.so  
 -- looking for PCL_SURFACE
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -298,6 +331,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_SURFACE: /usr/lib/x86_64-linux-gnu/libpcl_surface.so  
 -- looking for PCL_REGISTRATION
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -309,6 +343,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_REGISTRATION: /usr/lib/x86_64-linux-gnu/libpcl_registration.so  
 -- looking for PCL_KEYPOINTS
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -320,6 +355,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_KEYPOINTS: /usr/lib/x86_64-linux-gnu/libpcl_keypoints.so  
 -- looking for PCL_TRACKING
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -331,6 +367,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_TRACKING: /usr/lib/x86_64-linux-gnu/libpcl_tracking.so  
 -- looking for PCL_RECOGNITION
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -342,6 +379,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_RECOGNITION: /usr/lib/x86_64-linux-gnu/libpcl_recognition.so  
 -- looking for PCL_STEREO
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args` (PCL_STEREO)
@@ -353,6 +391,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_STEREO: /usr/lib/x86_64-linux-gnu/libpcl_stereo.so  
 -- looking for PCL_APPS
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args` (PCL_APPS)
@@ -364,6 +403,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_APPS: /usr/lib/x86_64-linux-gnu/libpcl_apps.so  
 -- looking for PCL_IN_HAND_SCANNER
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -375,6 +415,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_IN_HAND_SCANNER: /usr/include/pcl-1.10  
 -- looking for PCL_POINT_CLOUD_EDITOR
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -387,6 +428,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_POINT_CLOUD_EDITOR: /usr/include/pcl-1.10  
 -- looking for PCL_OUTOFCORE
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args`
@@ -398,6 +440,7 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_OUTOFCORE: /usr/lib/x86_64-linux-gnu/libpcl_outofcore.so  
 -- looking for PCL_PEOPLE
 CMake Warning (dev) at /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
   The package name passed to `find_package_handle_standard_args` (PCL_PEOPLE)
@@ -409,6 +452,8 @@ Call Stack (most recent call first):
   CMakeLists.txt:4 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+-- Found PCL_PEOPLE: /usr/lib/x86_64-linux-gnu/libpcl_people.so  
+-- Found PCL: pcl_common;pcl_kdtree;pcl_octree;pcl_search;pcl_sample_consensus;pcl_filters;pcl_io;pcl_features;pcl_ml;pcl_segmentation;pcl_visualization;pcl_surface;pcl_registration;pcl_keypoints;pcl_tracking;pcl_recognition;pcl_stereo;pcl_apps;pcl_outofcore;pcl_people;/usr/lib/x86_64-linux-gnu/libboost_system.so;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;/usr/lib/x86_64-linux-gnu/libboost_iostreams.so;/usr/lib/x86_64-linux-gnu/libboost_regex.so;optimized;/usr/lib/x86_64-linux-gnu/libqhull.so;debug;/usr/lib/x86_64-linux-gnu/libqhull.so;vtkChartsCore;vtkCommonColor;vtkCommonCore;vtksys;vtkCommonDataModel;vtkCommonMath;vtkCommonMisc;vtkCommonSystem;vtkCommonTransforms;vtkCommonExecutionModel;vtkFiltersGeneral;vtkCommonComputationalGeometry;vtkFiltersCore;vtkInfovisCore;vtkFiltersExtraction;vtkFiltersStatistics;vtkImagingFourier;vtkImagingCore;vtkalglib;vtkRenderingContext2D;vtkRenderingCore;vtkFiltersGeometry;vtkFiltersSources;vtkRenderingFreeType;/usr/lib/x86_64-linux-gnu/libfreetype.so;/usr/lib/x86_64-linux-gnu/libz.so;vtkFiltersModeling;vtkImagingSources;vtkInteractionStyle;vtkInteractionWidgets;vtkFiltersHybrid;vtkImagingColor;vtkImagingGeneral;vtkImagingHybrid;vtkIOImage;vtkDICOMParser;vtkmetaio;/usr/lib/x86_64-linux-gnu/libjpeg.so;/usr/lib/x86_64-linux-gnu/libpng.so;/usr/lib/x86_64-linux-gnu/libtiff.so;vtkRenderingAnnotation;vtkRenderingVolume;vtkIOXML;vtkIOCore;vtkIOXMLParser;/usr/lib/x86_64-linux-gnu/libexpat.so;vtkIOGeometry;vtkIOLegacy;vtkIOPLY;vtkRenderingLOD;vtkViewsContext2D;vtkViewsCore;vtkRenderingContextOpenGL2;vtkRenderingOpenGL2;FLANN::FLANN (Required is at least version "1.2") 
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/haocheng/CLionProjects/pcmattex/cmake-build-debug
+-- Build files have been written to: /home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture/cmake-build-debug

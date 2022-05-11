@@ -45,7 +45,7 @@ Vector3 PCNormal::getPCPointNormal(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cl
     Vector3 point_normal(normal_x, normal_y, normal_z);
 
     std::cout << "Got point: " << point_coordinate << " of index " << i << " that has normal: " << point_normal << std::endl;
-    return Vector3(normal_x, normal_y, normal_z);
+    return point_normal;
 }
 
 

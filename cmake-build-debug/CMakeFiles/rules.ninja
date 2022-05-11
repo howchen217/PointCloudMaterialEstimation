@@ -80,7 +80,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/haocheng/CLionProjects/pcmattex -B/home/haocheng/CLionProjects/pcmattex/cmake-build-debug
+  command = /home/haocheng/CLion-2022.1/clion-2022.1/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture -B/home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture/cmake-build-debug
   description = Re-running CMake...
   generator = 1
 
