@@ -12,7 +12,8 @@ void PCPointMaterialBuilder::buildBasicData() {
 }
 
 void PCPointMaterialBuilder::buildLaserDirection() {
-    pcPointMaterial.setLaserDirection(point_coordinate - scanner_position);
+    //pcPointMaterial.setLaserDirection(point_coordinate - scanner_position);
+    pcPointMaterial.setLaserDirection(scanner_position - point_coordinate);
 }
 
 /**

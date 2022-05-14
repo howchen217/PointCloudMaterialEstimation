@@ -15,9 +15,11 @@ class PCNormal {
 public:
     static pcl::PointCloud<pcl::Normal>::Ptr getPCNormals(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud);
     static Vector3 getPCPointNormal(const pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, const pcl::PointCloud<pcl::Normal>::Ptr cloud_normals, Vector3 point_coordinate);
+    static Vector3 getNormalVectorByIndex(const pcl::PointCloud<pcl::Normal>::Ptr cloud_normals, const int index);
 private:
     static float getAveragePointDistance(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cloud, const pcl::search::KdTree<pcl::PointXYZ>::Ptr& tree);
     static int getPCPointIndex(const pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, Vector3 point_coordinate);
+
 };
 
 

@@ -4,6 +4,7 @@
 
 #include "PCReader.h"
 
+
 pcl::PointCloud<pcl::PointXYZ>::Ptr PCReader::parseToXYZCloudManual(const std::string& filename){
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
 

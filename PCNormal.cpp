@@ -48,6 +48,14 @@ Vector3 PCNormal::getPCPointNormal(const pcl::PointCloud<pcl::PointXYZ>::Ptr& cl
     return point_normal;
 }
 
+Vector3 PCNormal::getNormalVectorByIndex(const pcl::PointCloud<pcl::Normal>::Ptr cloud_normals, const int index){
+    float normal_x = cloud_normals->points[index].normal_x;
+    float normal_y = cloud_normals->points[index].normal_y;
+    float normal_z = cloud_normals->points[index].normal_z;
+
+    Vector3 point_normal(normal_x, normal_y, normal_z);
+    return point_normal;
+}
 
 
 float PCNormal::getAveragePointDistance(const pcl::PointCloud<pcl::PointXYZ>::Ptr& inputCloud, const pcl::search::KdTree<pcl::PointXYZ>::Ptr& kdtree) {

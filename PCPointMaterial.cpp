@@ -118,6 +118,13 @@ namespace pcmattex {
         PCPointMaterial::reflectance = reflectance;
     }
 
+    bool PCPointMaterial::materialIsNaN() {
+        if (isnan(albedo) || isnan(emissivity) || isnan(reflectance)){
+            return true;
+        }
+        return false;
+    }
+
     PCPointMaterial::PCPointMaterial() = default;
 
 

@@ -41,6 +41,8 @@ namespace pcmattex {
 
         PCPointMaterial();
 
+        bool materialIsNaN();
+
         float getRawIntensity() const;
 
         void setRawIntensity(float raw_intensity);
