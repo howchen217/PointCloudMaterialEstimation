@@ -9,11 +9,65 @@
 #include <pcl/filters/extract_indices.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/ml/kmeans.h>
-
+#include <pcl/pcl_macros.h>
 
 #include <pcl/features/normal_3d.h>
 
 #include "PCViewer.cpp"
+
+struct PointXYZRGBMaterial {
+    PCL_ADD_POINT4D;
+    PCL_ADD_RGB;
+    float emissivity;
+    float albedo;
+    float reflectance;
+    PCL_MAKE_ALIGNED_OPERATOR_NEW
+    //EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+} EIGEN_ALIGN16;
+
+POINT_CLOUD_REGISTER_POINT_STRUCT (PointXYZRGBMaterial, (float, x, x)
+(float, y, y) (float, z, z) (float, rgb, rgb) (float, emissivity, emissivity) (float, albedo, albedo) (float, reflectance, reflectnce));
+
+float distance(Vector3 v1, Vector3 v2){
+    return (v1 - v2).absolute();
+}
+
+Vector3 HSVtoRGB(float H, float S,float V){
+    if(H>360 || H<0 || S>100 || S<0 || V>100 || V<0){
+        //cout<<"The givem HSV values are not in valid range"<<endl;
+        throw std::invalid_argument("the given HSV values are not in valid range");
+    }
+    float s = S/100;
+    float v = V/100;
+    float C = s*v;
+    float X = C*(1-abs(fmod(H/60.0, 2)-1));
+    float m = v-C;
+    float r,g,b;
+    if(H >= 0 && H < 60){
+        r = C,g = X,b = 0;
+    }
+    else if(H >= 60 && H < 120){
+        r = X,g = C,b = 0;
+    }
+    else if(H >= 120 && H < 180){
+        r = 0,g = C,b = X;
+    }
+    else if(H >= 180 && H < 240){
+        r = 0,g = X,b = C;
+    }
+    else if(H >= 240 && H < 300){
+        r = X,g = 0,b = C;
+    }
+    else{
+        r = C,g = 0,b = X;
+    }
+    int R = (r+m)*255;
+    int G = (g+m)*255;
+    int B = (b+m)*255;
+
+    return Vector3(R, G, B);
+}
+
 
 int main(){
 
@@ -44,6 +98,9 @@ int main(){
     std::vector<std::vector<float>> kmeans_data;
     kmeans_data.reserve(cloud->size());
 
+    //this vector is the data for the cloud with material
+    //pcl::PointCloud<PointXYZRGBMaterial>::Ptr cloud_with_material;
+    pcl::PointCloud<PointXYZRGBMaterial>::Ptr cloud_with_material(new pcl::PointCloud<PointXYZRGBMaterial>);
 
     while (!feof(f)){
         int n_args = fscanf(f, "%f %f %f %i %i %i %f", &x, &y, &z, &r, &g, &b, &raw_intensity);
@@ -78,6 +135,22 @@ int main(){
             point_material[1] = mat.getAlbedo();
             point_material[2] = mat.getReflectance();
             kmeans_data.emplace_back(point_material);
+
+            //store xyz material pair so it can be displayed later?
+            //or make custom point type
+            Vector3 point_coordinate = mat.getPointCoordinate();
+            Vector3 point_rgb = mat.getRgb();
+            PointXYZRGBMaterial point_with_material;
+            point_with_material.x = point_coordinate[0];
+            point_with_material.y = point_coordinate[1];
+            point_with_material.z = point_coordinate[2];
+            point_with_material.r = point_rgb[0];
+            point_with_material.g = point_rgb[1];
+            point_with_material.b = point_rgb[2];
+            point_with_material.emissivity = mat.getEmissivity();
+            point_with_material.albedo = mat.getAlbedo();
+            point_with_material.reflectance = mat.getReflectance();
+            cloud_with_material->push_back(point_with_material);
         }
 
         //update index
@@ -115,6 +188,48 @@ int main(){
         std::cout << "albedo: " << centroids[i][1] << " ,";
         std::cout << "reflectance: " << centroids[i][2] << std::endl;
     }
+
+    //iterate through every point of the cloud, calculate distance from all centroids, and assign it a label?
+    //need to know the material associated with point, make a structure that stores the material and xyz
+    //this is just brute force for now
+    //make a new XYZRGB Cloud, this will be populated instead of the cloud_with_material cloud since that cannot be visualized
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr visualized_material_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
+    for (std::size_t i = 0; i < cloud_with_material->size (); ++i)
+    {
+        //compute distance to each centroid
+        PointXYZRGBMaterial current_point = cloud_with_material->points[i];
+        Vector3 current_material = Vector3(current_point.emissivity, current_point.albedo, current_point.reflectance);
+        //going through each centroid, assign number to min
+        int closest_centroid_index = -1;
+        float min_distance = FLT_MAX/2;
+        for (int i = 0; i < centroids.size(); i++){
+            Vector3 centroid_material = Vector3(centroids[i][0], centroids[i][1], centroids[i][2]);
+            float current_distance = distance(current_material, centroid_material);
+            if (current_distance < min_distance){
+                closest_centroid_index = i;
+                min_distance = current_distance;
+            }
+        }
+        Vector3 rgb_by_centroid = HSVtoRGB(360/(closest_centroid_index+1), 100, 50);
+        pcl::PointXYZRGB visualized_point(rgb_by_centroid[0], rgb_by_centroid[1], rgb_by_centroid[2]);
+        visualized_point.x = current_point.x;
+        visualized_point.y = current_point.y;
+        visualized_point.z = current_point.z;
+        visualized_material_cloud->push_back(visualized_point);
+        //std::cout << visualized_point << std::endl;
+    }
+
+
+
+    //See if it possible to display custom cloud
+    pcl::visualization::CloudViewer viewer("RGBXYZ Viewer");
+    viewer.showCloud(visualized_material_cloud);
+    while (!viewer.wasStopped()) {
+
+    }
+
+
+
 
     //display the cloud
 //    simpleXYZViewer(cloud);

@@ -16,7 +16,7 @@ add_library(pcmat
         PCPointMaterialDirector.cpp
         PCPointMaterialDirector.h
         PCPointMaterialBuilder.cpp
-        PCPointMaterialBuilder.h PCViewer.cpp PCViewer.h PCReader.cpp PCReader.h PCNormal.cpp PCNormal.h)
+        PCPointMaterialBuilder.h PCViewer.cpp PCViewer.h PCReader.cpp PCReader.h PCNormal.cpp PCNormal.h SimplePCPointMaterialBuilder.cpp SimplePCPointMaterialBuilder.h)
 
 add_library(vector3
         Quaternion.cpp
