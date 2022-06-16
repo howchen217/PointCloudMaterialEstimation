@@ -15,6 +15,7 @@ public:
 
     static pcl::PointCloud<pcl::PointXYZ>::Ptr parseToXYZCloudPCl();
 
+    static pcl::PointCloud<pcl::PointXYZRGB>::Ptr readPCDXYZRGBCloud(const std::string& filename);
 };
 
 #endif //PCMATTEX_PCREADER_H

@@ -14,6 +14,8 @@
 #include <pcl/features/normal_3d.h>
 
 #include "PCViewer.cpp"
+#include "SimpleFakeIntensityPCPointMaterialBuilder.h"
+#include "FakeIntensityPCPointMaterialBuilder.h"
 
 struct PointXYZRGBMaterial {
     PCL_ADD_POINT4D;
@@ -71,116 +73,119 @@ Vector3 HSVtoRGB(float H, float S,float V){
 
 int main(){
 
-    std::string filename = "/home/haocheng/Documents/ASC Cloud files/house4.txt";
+    //std::string filename = "/home/haocheng/Documents/PCD files/Ceramic plates/plate_beige_c.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/Ceramic plates/plate_blue_c.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/Ceramic plates/plate_white_c.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/plastic/plastic_basket.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/plastic/plastic_cooker.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/plastic/plastic_jar.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/wood/wood_bat.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/wood/wood_cutboard_c.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/wood/wood_saltshaker.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/same color dif material/cushion.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/same color dif material/metal_plate.pcd";
+    std::string filename = "/home/haocheng/Documents/PCD files/same color dif material/plastic_jar_no_lid.pcd";
 
-    //load the cloud and get the normals
-    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud = PCReader::parseToXYZCloudManual(
-    filename);
-    pcl::PointCloud<pcl::Normal>::Ptr cloud_normals = PCNormal::getPCNormals(cloud);
+    //std::string filename = "/home/haocheng/Documents/PCD files/basketball.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/less_stainless_pan_cleaned.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/stainless_pan_cleaned.pcd";
+    //std::string filename = "/home/haocheng/Documents/PCD files/wooden_spoon_cleaned.pcd";
 
-    //Reading the file line by line again for material information
-    std::cout << "Begin calculating materials of entire cloud" << std::endl;
-    FILE* f = fopen(filename.c_str(), "r");
-    if(nullptr == f)
-    {
-        std::cout << "ERROR: failed to open file: " << filename << std::endl;
-        return -1;
-    }
-    float x, y, z;
-    int r, g, b;
-    float raw_intensity;
-    //the index is which line we are on in the file and should match the index of point in the cloud
-    int current_index = 0;
-    //indices of points to be removed, since they have weird corrected intensity values, <0 or >1.
-    pcl::PointIndices::Ptr points_of_weird_intensity(new pcl::PointIndices());
+    //load the cloud
+    pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_xyzrgb = PCReader::readPCDXYZRGBCloud(filename);
+    //get the normals
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_xyz(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::copyPointCloud(*cloud_xyzrgb, *cloud_xyz); //need to dereference the pointer to copy it over..
+    pcl::PointCloud<pcl::Normal>::Ptr cloud_normals = PCNormal::getPCNormals(cloud_xyz);
+    //cloud_xyz.reset();
 
-    //get the data needed for k means, reserve enough spots
-    std::vector<std::vector<float>> kmeans_data;
-    kmeans_data.reserve(cloud->size());
+    //print normals
+//    for (std::size_t i = 0; i < cloud_normals->size (); ++i) {
+//        std::cout << cloud_normals->points[i] << std::endl;
+//    }
 
-    //this vector is the data for the cloud with material
-    //pcl::PointCloud<PointXYZRGBMaterial>::Ptr cloud_with_material;
+
+    //can try visualize the normal later..or do normal refinement
+
+    //make them into cloud with materials. normal no longer needed
     pcl::PointCloud<PointXYZRGBMaterial>::Ptr cloud_with_material(new pcl::PointCloud<PointXYZRGBMaterial>);
 
-    while (!feof(f)){
-        int n_args = fscanf(f, "%f %f %f %i %i %i %f", &x, &y, &z, &r, &g, &b, &raw_intensity);
-        if(n_args != 7)
-            continue;
-        //to check if index consistent with line of file
-        assert (x == cloud->points[current_index].x); //might fail due to float point errors? Or would it?
+    //k means preparation
+    std::vector<std::vector<float>> kmeans_data;
+    kmeans_data.reserve(cloud_xyzrgb->size());
 
-        //parse the data appropriately
-        Vector3 RGB(r, g, b);
-        Vector3 point_coordinate(x, y, z);
-        Vector3 point_normal = PCNormal::getNormalVectorByIndex(cloud_normals, current_index);
-        Vector3 scanner_position(0, 0, 0);
+    //prepare point removal, not even necessary any more since point get automatically excluded.
+    //pcl::PointIndices::Ptr points_of_weird_intensity(new pcl::PointIndices());
+
+    for (std::size_t i = 0; i < cloud_xyzrgb->size (); ++i) {
+
+        //get the data
+        auto point_xyzrgb = cloud_xyzrgb->points[i];
+        pcl::Normal normal = cloud_normals->points[i];
 
         //calculate the material
-        PCPointMaterialBuilder* builder = new PCPointMaterialBuilder(raw_intensity, RGB, point_coordinate, point_normal, scanner_position);
+        //prepare data
+        Vector3 RGB(point_xyzrgb.r, point_xyzrgb.g, point_xyzrgb.b);
+        Vector3 point_coordinate(point_xyzrgb.x, point_xyzrgb.y, point_xyzrgb.z);
+        Vector3 scanner_position(0,0,0);
+        Vector3 point_normal(normal.normal_x, normal.normal_y, normal.normal_z);
+
+        //with intensity correction
+        //PCPointMaterialBuilder* builder = new FakeIntensityPCPointMaterialBuilder(RGB, point_coordinate, scanner_position, point_normal);
+        //without intensity correction
+        PCPointMaterialBuilder* builder = new SimpleFakeIntensityPCPointMaterialBuilder(RGB, point_coordinate);
         PCPointMaterialDirector director;
         director.setBuilder(builder);
         director.buildPCPointMaterial();
         pcmattex::PCPointMaterial mat = builder->getPCPointMaterial();
 
-        //remove weird points, nan
-        if(mat.getCorrectedIntensity() > 1 || mat.getCorrectedIntensity() < 0 || mat.materialIsNaN()){
-            points_of_weird_intensity->indices.push_back(current_index);
-        } else {
-            //print the material only if good
-            //std::cout << mat << std::endl;
+        //std::cout << mat << std::endl;
 
-            //only add the good points to k means clustering, {emissivity, albedo, reflectance}
+        if(mat.getCorrectedIntensity() > 1 || mat.getCorrectedIntensity() < 0 || mat.materialIsNaN()){
+            //points_of_weird_intensity->indices.push_back(i);
+        } else {
+
+            //create new point, put it in material cloud
+            PointXYZRGBMaterial new_point;
+            new_point.x = point_xyzrgb.x;
+            new_point.y = point_xyzrgb.y;
+            new_point.z = point_xyzrgb.z;
+            new_point.r = point_xyzrgb.r;
+            new_point.g = point_xyzrgb.g;
+            new_point.b = point_xyzrgb.b;
+            new_point.emissivity = mat.getEmissivity();
+            new_point.albedo = mat.getAlbedo();
+            new_point.reflectance = mat.getReflectance();
+            cloud_with_material->push_back(new_point);
+
+            //prepare for k means
             std::vector<float> point_material(3);
             point_material[0] = mat.getEmissivity();
             point_material[1] = mat.getAlbedo();
             point_material[2] = mat.getReflectance();
             kmeans_data.emplace_back(point_material);
-
-            //store xyz material pair so it can be displayed later?
-            //or make custom point type
-            Vector3 point_coordinate = mat.getPointCoordinate();
-            Vector3 point_rgb = mat.getRgb();
-            PointXYZRGBMaterial point_with_material;
-            point_with_material.x = point_coordinate[0];
-            point_with_material.y = point_coordinate[1];
-            point_with_material.z = point_coordinate[2];
-            point_with_material.r = point_rgb[0];
-            point_with_material.g = point_rgb[1];
-            point_with_material.b = point_rgb[2];
-            point_with_material.emissivity = mat.getEmissivity();
-            point_with_material.albedo = mat.getAlbedo();
-            point_with_material.reflectance = mat.getReflectance();
-            cloud_with_material->push_back(point_with_material);
         }
 
-        //update index
-        current_index++;
-
         delete builder;
-
     }
-    fclose(f);
 
 
+    //check how many points weren't included
+    //point removal is unnecessary currently since material cloud does not even include them
+    //std::cout << "to be removed: "<< points_of_weird_intensity->indices.size() << std::endl;
+    std::cout << "original cloud has: " << cloud_xyzrgb->size() << " points,";
+    std::cout << "material cloud has: " << cloud_with_material->size() << " points.";
 
-    std::cout << "to be removed: "<< points_of_weird_intensity->indices.size() << std::endl;
-
-    //delete points that have corrected intensity > 1 or < 0
-    pcl::ExtractIndices<pcl::PointXYZ> extract;
-    extract.setInputCloud(cloud);
-    extract.setIndices(points_of_weird_intensity);
-    extract.setNegative(true);
-    extract.filter(*cloud);
-
+    cloud_normals.reset();
 
     //do kmeans
-    int k = 3;
-    pcl::Kmeans kmeans(kmeans_data.size(), 3);
+    int k = 1;
+    pcl::Kmeans kmeans(kmeans_data.size(), 3); //3 is dimension of vector
     kmeans.setClusterSize(k);
     kmeans.setInputData(kmeans_data);
     kmeans.kMeans();
     pcl::Kmeans::Centroids centroids = kmeans.get_centroids();
-    std::cout << "points used for kmeans: " << cloud->size() << std::endl;
+    std::cout << "points used for kmeans: " << kmeans_data.size() << std::endl;
     std::cout << "centroid count: " << centroids.size() << std::endl;
     for (int i = 0; i<centroids.size(); i++)
     {
@@ -210,7 +215,7 @@ int main(){
                 min_distance = current_distance;
             }
         }
-        Vector3 rgb_by_centroid = HSVtoRGB(360/(closest_centroid_index+1), 100, 50);
+        Vector3 rgb_by_centroid = HSVtoRGB(360/(closest_centroid_index+1), 100, 100);
         pcl::PointXYZRGB visualized_point(rgb_by_centroid[0], rgb_by_centroid[1], rgb_by_centroid[2]);
         visualized_point.x = current_point.x;
         visualized_point.y = current_point.y;
@@ -219,29 +224,35 @@ int main(){
         //std::cout << visualized_point << std::endl;
     }
 
+    cloud_with_material.reset();
 
+    //track centroid point counts to see which cluster is bigger
+    int cluster1_size = 0;
+    int cluster2_size = 0;
+    Vector3 cluster1_rgb = HSVtoRGB(360, 100, 100);
+    for (std::size_t i = 0; i < visualized_material_cloud->size (); ++i){
+        pcl::PointXYZRGB visualized_point = visualized_material_cloud->points[i];
+        if(visualized_point.r == cluster1_rgb[0] && visualized_point.g == cluster1_rgb[1] && visualized_point.b == cluster1_rgb[2]){
+            cluster1_size++;
+        } else {
+            cluster2_size++;
+        }
+    }
+    std::cout << "total points: " << visualized_material_cloud->size() << std::endl;
+    std::cout << "centroid 1 cluster size: " << cluster1_size << std::endl;
+    std::cout << "centroid 2 cluster size: " << cluster2_size << std::endl;
+
+
+    pcl::io::savePCDFileASCII ("test_pcd.pcd", *visualized_material_cloud);
 
     //See if it possible to display custom cloud
-    pcl::visualization::CloudViewer viewer("RGBXYZ Viewer");
-    viewer.showCloud(visualized_material_cloud);
-    while (!viewer.wasStopped()) {
+    pcl::visualization::CloudViewer viewer3("RGBXYZ Viewer");
+    viewer3.showCloud(visualized_material_cloud);
+    while (!viewer3.wasStopped()) {
 
     }
 
-
-
-
-    //display the cloud
-//    simpleXYZViewer(cloud);
-
-    //save the cloud to pcd
-    pcl::io::savePCDFileASCII ("test_pcd.pcd", *cloud);
-
-    std::cout << "Loaded material with " << cloud->size() << " points." << std::endl;
-
-    cloud.reset();
-    cloud_normals.reset();
-
+    visualized_material_cloud.reset();
     return 0;
 }
 

@@ -27,16 +27,23 @@ public:
                            const Vector3 &point_normal, const Vector3 &scanner_position);
 
 
-    void buildBasicData();
-    void buildLaserDirection();
-    void buildNormalDirection();
-    void buildIncidenceAngle();
-    void buildCorrectedIntensity();
-    void buildReflectance();
-    void buildAlbedo();
-    void buildEmissivity();
+    virtual void buildBasicData();
 
-    pcmattex::PCPointMaterial getPCPointMaterial();
+    virtual void buildLaserDirection();
+
+    virtual void buildNormalDirection();
+
+    virtual void buildIncidenceAngle();
+
+    virtual void buildCorrectedIntensity();
+
+    virtual void buildReflectance();
+
+    virtual void buildAlbedo();
+
+    virtual void buildEmissivity();
+
+    virtual pcmattex::PCPointMaterial getPCPointMaterial();
 
 
 
