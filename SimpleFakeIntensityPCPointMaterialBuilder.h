@@ -15,7 +15,7 @@ private:
     Vector3 rgb;
     Vector3 point_coordinate;
 
-    pcmattex::PCPointMaterial pcPointMaterial;
+    PCPointMaterial pcPointMaterial;
 
 
 public:
@@ -32,7 +32,7 @@ public:
     void buildAlbedo() override;
     void buildEmissivity() override;
 
-    pcmattex::PCPointMaterial getPCPointMaterial() override;
+    PCPointMaterial getPCPointMaterial() override;
 
 
 };

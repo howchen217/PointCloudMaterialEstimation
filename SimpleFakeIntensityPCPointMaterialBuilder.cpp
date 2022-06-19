@@ -55,7 +55,7 @@ void SimpleFakeIntensityPCPointMaterialBuilder::buildEmissivity() {
 
 
 
-pcmattex::PCPointMaterial SimpleFakeIntensityPCPointMaterialBuilder::getPCPointMaterial() {
+PCPointMaterial SimpleFakeIntensityPCPointMaterialBuilder::getPCPointMaterial() {
     return pcPointMaterial;
 }
 

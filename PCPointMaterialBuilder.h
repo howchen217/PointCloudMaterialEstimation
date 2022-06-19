@@ -17,7 +17,7 @@ private:
     Vector3 scanner_position;
 
 
-    pcmattex::PCPointMaterial pcPointMaterial;
+    PCPointMaterial pcPointMaterial;
 
 
 public:
@@ -43,7 +43,7 @@ public:
 
     virtual void buildEmissivity();
 
-    virtual pcmattex::PCPointMaterial getPCPointMaterial();
+    virtual PCPointMaterial getPCPointMaterial();
 
 
 

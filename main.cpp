@@ -137,7 +137,7 @@ int main(){
         PCPointMaterialDirector director;
         director.setBuilder(builder);
         director.buildPCPointMaterial();
-        pcmattex::PCPointMaterial mat = builder->getPCPointMaterial();
+        PCPointMaterial mat = builder->getPCPointMaterial();
 
         //std::cout << mat << std::endl;
 
@@ -241,7 +241,6 @@ int main(){
     std::cout << "total points: " << visualized_material_cloud->size() << std::endl;
     std::cout << "centroid 1 cluster size: " << cluster1_size << std::endl;
     std::cout << "centroid 2 cluster size: " << cluster2_size << std::endl;
-
 
     pcl::io::savePCDFileASCII ("test_pcd.pcd", *visualized_material_cloud);
 

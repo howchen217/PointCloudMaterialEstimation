@@ -49,3 +49,17 @@
 24657	28178	1654504662995151342	pcmattex	7aff5850aac21657
 10	24492	1654504709779264963	CMakeFiles/pcmattex.dir/main.cpp.o	90035399ed0327ac
 24492	28568	1654504713855274387	pcmattex	7aff5850aac21657
+14	982	1655389656945621601	CMakeFiles/pcmat.dir/PCPointMaterialBuilder.cpp.o	f07eedb58587ef13
+13	1005	1655389656969627491	CMakeFiles/pcmat.dir/PCPointMaterial.cpp.o	dbb6c2eedd1c9aa4
+13	1179	1655389657141669709	CMakeFiles/pcmat.dir/PCPointMaterialDirector.cpp.o	75307ce8026fa5b6
+20	1229	1655389657193682473	CMakeFiles/pcmat.dir/SimpleFakeIntensityPCPointMaterialBuilder.cpp.o	f817e9597b2cf4fb
+15	1278	1655389657241694255	CMakeFiles/pcmat.dir/FakeIntensityPCPointMaterialBuilder.cpp.o	d2feab83d4f7da32
+1005	1686	1655389657649794401	CMakeFiles/vector3.dir/Vector3.cpp.o	e15f5cf5466d033d
+983	1854	1655389657817835637	CMakeFiles/vector3.dir/Quaternion.cpp.o	ecae78a0fa00b284
+1854	1873	1655389657837840546	libvector3.a	f726a964c7f1f7c8
+17	11732	1655389667692259281	CMakeFiles/pcmat.dir/PCReader.cpp.o	343d74f43f1f127f
+19	17876	1655389673829766194	CMakeFiles/pcmat.dir/PCNormal.cpp.o	c2675cd5db5d52b9
+16	21065	1655389677022550245	CMakeFiles/pcmat.dir/PCViewer.cpp.o	eabb6687cfa6e1a0
+21065	21231	1655389677170586602	libpcmat.a	9aad948b67104f52
+1179	25899	1655389681851736335	CMakeFiles/pcmattex.dir/main.cpp.o	90035399ed0327ac
+25900	29572	1655389685524638577	pcmattex	7aff5850aac21657

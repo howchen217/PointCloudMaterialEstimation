@@ -18,7 +18,7 @@ private:
     Vector3 scanner_position;
     Vector3 point_normal;
 
-    pcmattex::PCPointMaterial pcPointMaterial;
+    PCPointMaterial pcPointMaterial;
 
 
 public:
@@ -37,7 +37,7 @@ public:
     void buildAlbedo() override;
     void buildEmissivity() override;
 
-    pcmattex::PCPointMaterial getPCPointMaterial() override;
+    PCPointMaterial getPCPointMaterial() override;
 
 };
 

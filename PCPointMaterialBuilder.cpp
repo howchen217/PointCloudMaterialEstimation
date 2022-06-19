@@ -16,10 +16,6 @@ void PCPointMaterialBuilder::buildLaserDirection() {
     pcPointMaterial.setLaserDirection(scanner_position - point_coordinate);
 }
 
-/**
- * Calculate the normal direction of the point from a set of points.
- * Requires cloud input
- */
 void PCPointMaterialBuilder::buildNormalDirection() {
     pcPointMaterial.setNormalDirection(point_normal);
 }
@@ -61,7 +57,7 @@ void PCPointMaterialBuilder::buildEmissivity() {
 
 
 
-pcmattex::PCPointMaterial PCPointMaterialBuilder::getPCPointMaterial() {
+PCPointMaterial PCPointMaterialBuilder::getPCPointMaterial() {
     return pcPointMaterial;
 }
 
