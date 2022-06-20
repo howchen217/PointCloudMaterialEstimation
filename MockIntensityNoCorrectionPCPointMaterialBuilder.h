@@ -2,8 +2,8 @@
 // Created by haocheng on 19-5-22.
 //
 
-#ifndef PCMATTEX_SIMPLEFAKEINTENSITYPCPOINTMATERIALBUILDER_H
-#define PCMATTEX_SIMPLEFAKEINTENSITYPCPOINTMATERIALBUILDER_H
+#ifndef PCMATTEX_MOCKINTENSITYNOCORRECTIONPCPOINTMATERIALBUILDER_H
+#define PCMATTEX_MOCKINTENSITYNOCORRECTIONPCPOINTMATERIALBUILDER_H
 
 
 #include "Vector3.hpp"
@@ -11,7 +11,7 @@
 #include "PCPointMaterialBuilder.h"
 
 
-class SimpleFakeIntensityPCPointMaterialBuilder : public PCPointMaterialBuilder{
+class MockIntensityNoCorrectionPCPointMaterialBuilder : public PCPointMaterialBuilder{
 private:
     Vector3 rgb;
     Vector3 point_coordinate;
@@ -20,9 +20,9 @@ private:
 
 
 public:
-    SimpleFakeIntensityPCPointMaterialBuilder();
+    MockIntensityNoCorrectionPCPointMaterialBuilder();
 
-    SimpleFakeIntensityPCPointMaterialBuilder(const Vector3 &rgb, const Vector3 &point_coordinate);
+    MockIntensityNoCorrectionPCPointMaterialBuilder(const Vector3 &rgb, const Vector3 &point_coordinate);
 
     void buildBasicData() override;
     void buildLaserDirection() override;
@@ -39,4 +39,4 @@ public:
 };
 
 
-#endif //PCMATTEX_SIMPLEFAKEINTENSITYPCPOINTMATERIALBUILDER_H
+#endif //PCMATTEX_MOCKINTENSITYNOCORRECTIONPCPOINTMATERIALBUILDER_H

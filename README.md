@@ -35,7 +35,7 @@ pcmattex::PCPointMaterial point_material = builder->getPCPointMaterial();
 ### 2. Point Material with mock intensity, still with intensity correction
 This is for when intensity information isn't available and grayscale is used to mock intensity. Intensity correction is still performed here. 
 ```
-PCPointMaterialBuilder* builder = new FakeIntensityPCPointMaterialBuilder(RGB, point_coordinate, scanner_position, point_normal);
+PCPointMaterialBuilder* builder = new MockIntensityPCPointMaterialBuilder(RGB, point_coordinate, scanner_position, point_normal);
 PCPointMaterialDirector director;
 director.setBuilder(builder);
 director.buildPCPointMaterial();
@@ -45,7 +45,7 @@ pcmattex::PCPointMaterial point_material = builder->getPCPointMaterial();
 ### 3. Point Material with mock intensity, without intensity correction
 This discards intensity correction altogether. 
 ```
-PCPointMaterialBuilder* builder = new SimpleFakeIntensityPCPointMaterialBuilder(RGB, point_coordinate);
+PCPointMaterialBuilder* builder = new MockIntensityNoCorrectionPCPointMaterialBuilder(RGB, point_coordinate);
 PCPointMaterialDirector director;
 director.setBuilder(builder);
 director.buildPCPointMaterial();

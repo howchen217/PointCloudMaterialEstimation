@@ -14,8 +14,8 @@
 #include <pcl/features/normal_3d.h>
 
 #include "PCViewer.cpp"
-#include "SimpleFakeIntensityPCPointMaterialBuilder.h"
-#include "FakeIntensityPCPointMaterialBuilder.h"
+#include "MockIntensityNoCorrectionPCPointMaterialBuilder.h"
+#include "MockIntensityPCPointMaterialBuilder.h"
 
 struct PointXYZRGBMaterial {
     PCL_ADD_POINT4D;
@@ -131,9 +131,9 @@ int main(){
         Vector3 point_normal(normal.normal_x, normal.normal_y, normal.normal_z);
 
         //with intensity correction
-        //PCPointMaterialBuilder* builder = new FakeIntensityPCPointMaterialBuilder(RGB, point_coordinate, scanner_position, point_normal);
+        //PCPointMaterialBuilder* builder = new MockIntensityPCPointMaterialBuilder(RGB, point_coordinate, scanner_position, point_normal);
         //without intensity correction
-        PCPointMaterialBuilder* builder = new SimpleFakeIntensityPCPointMaterialBuilder(RGB, point_coordinate);
+        PCPointMaterialBuilder* builder = new MockIntensityNoCorrectionPCPointMaterialBuilder(RGB, point_coordinate);
         PCPointMaterialDirector director;
         director.setBuilder(builder);
         director.buildPCPointMaterial();

@@ -9,6 +9,8 @@
 #include "PCPointMaterial.h"
 
 /**
+ * \brief Parent builder class for PCPointMaterial, estimate material from point clouds with intensity.
+ *
  * The builder class for PCPointMaterial, following the builder design pattern.
  * It keeps the calculation in the correct order to avoid skipping preliminary results.
  */
