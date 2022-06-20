@@ -10,6 +10,7 @@
 #include "PCPointMaterial.h"
 #include "PCPointMaterialBuilder.h"
 
+
 class SimpleFakeIntensityPCPointMaterialBuilder : public PCPointMaterialBuilder{
 private:
     Vector3 rgb;

@@ -5,7 +5,9 @@
 #ifndef PCMATTEX_PCVIEWER_H
 #define PCMATTEX_PCVIEWER_H
 
-
+/**
+ * Utility class for point cloud viewing.
+ */
 class PCViewer {
 
 };

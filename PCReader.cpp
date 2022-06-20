@@ -6,7 +6,7 @@
 #include "PCReader.h"
 
 
-pcl::PointCloud<pcl::PointXYZ>::Ptr PCReader::parseToXYZCloudManual(const std::string &filename) {
+pcl::PointCloud<pcl::PointXYZ>::Ptr PCReader::readASCToXYZCloudManual(const std::string &filename) {
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
 
     std::cout << "Begin Loading Model" << std::endl;
@@ -41,16 +41,12 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr PCReader::parseToXYZCloudManual(const std::s
     return cloud;
 }
 
-/**
- * Can only read files with only XYZ. Better to make your own cloud parser.
- * @return cloud
- */
-pcl::PointCloud<pcl::PointXYZ>::Ptr PCReader::parseToXYZCloudPCl() {
+pcl::PointCloud<pcl::PointXYZ>::Ptr PCReader::readASCToXYZCloudPCl(const std::string &filename) {
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
     pcl::ASCIIReader reader;
     reader.setSepChars(" ");
 
-    reader.read("/home/haocheng/Documents/ASC Cloud files/5pointsXYZ.txt", *cloud);
+    reader.read(filename, *cloud);
     return cloud;
 }
 

@@ -44,3 +44,13 @@
 54897	54932	1655623856799566062	libpcmat.a	9aad948b67104f52
 4234	65795	1655623867653531981	CMakeFiles/pcmattex.dir/main.cpp.o	54013074cdbcc39e
 65795	72210	1655623874058731544	pcmattex	803a3a0b78605216
+17	1041	1655631117876722065	CMakeFiles/pcmat.dir/PCPointMaterialBuilder.cpp.o	87e1e035229c3682
+16	1120	1655631117956720453	CMakeFiles/pcmat.dir/PCPointMaterialDirector.cpp.o	30d578df01ad751a
+18	1432	1655631118268714177	CMakeFiles/pcmat.dir/FakeIntensityPCPointMaterialBuilder.cpp.o	fb06c36da8dfcbc7
+16	1489	1655631118324713051	CMakeFiles/pcmat.dir/PCPointMaterial.cpp.o	7681acf44fcded9c
+29	1511	1655631118340712729	CMakeFiles/pcmat.dir/SimpleFakeIntensityPCPointMaterialBuilder.cpp.o	88e3e53748c2fcd2
+21	11049	1655631127892522735	CMakeFiles/pcmat.dir/PCReader.cpp.o	d95783b5f0ee0ff3
+21	16437	1655631133280417442	CMakeFiles/pcmat.dir/PCViewer.cpp.o	7c875acb4d2a3bd7
+16437	16452	1655631133296417131	libpcmat.a	9aad948b67104f52
+53	21732	1655631138576315243	CMakeFiles/pcmattex.dir/main.cpp.o	54013074cdbcc39e
+21733	25014	1655631141844252813	pcmattex	803a3a0b78605216
