@@ -10,6 +10,7 @@ void MockIntensityNoCorrectionPCPointMaterialBuilder::buildBasicData() {
     pcPointMaterial.setPointCoordinate(point_coordinate);
 }
 
+
 void MockIntensityNoCorrectionPCPointMaterialBuilder::buildLaserDirection() {
 //    pcPointMaterial.setLaserDirection(Vector3(0));
 }

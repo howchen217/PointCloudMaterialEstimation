@@ -6,7 +6,7 @@
 
 
 
-void PCPointMaterialDirector::setBuilder(PCPointMaterialBuilder* builder) {
+void PCPointMaterialDirector::setBuilder(PCPointMaterialBuilder *builder) {
     pcPointMaterialBuilder = builder;
 }
 
