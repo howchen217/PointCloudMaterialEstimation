@@ -238,7 +238,8 @@
 				9,
 				11,
 				13,
-				15
+				15,
+				16
 			]
 		}
 	],
@@ -330,6 +331,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "MockIntensityPCPointMaterialBuilder.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "PointXYZRGBMaterial.h",
 			"sourceGroupIndex" : 1
 		}
 	],

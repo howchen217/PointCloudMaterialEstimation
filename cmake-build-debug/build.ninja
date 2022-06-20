@@ -97,17 +97,25 @@ build CMakeFiles/pcmat.dir/PCNormal.cpp.o: CXX_COMPILER__pcmat_Debug /home/haoch
   OBJECT_DIR = CMakeFiles/pcmat.dir
   OBJECT_FILE_DIR = CMakeFiles/pcmat.dir
 
-build CMakeFiles/pcmat.dir/SimpleFakeIntensityPCPointMaterialBuilder.cpp.o: CXX_COMPILER__pcmat_Debug /home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture/SimpleFakeIntensityPCPointMaterialBuilder.cpp || cmake_object_order_depends_target_pcmat
+build CMakeFiles/pcmat.dir/MockIntensityNoCorrectionPCPointMaterialBuilder.cpp.o: CXX_COMPILER__pcmat_Debug /home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture/MockIntensityNoCorrectionPCPointMaterialBuilder.cpp || cmake_object_order_depends_target_pcmat
   DEFINES = -DDISABLE_LIBUSB_1_0 -DDISABLE_OPENNI -DDISABLE_OPENNI2 -DDISABLE_PCAP -DDISABLE_PNG -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT="1(vtkRenderingContextOpenGL2)" -DvtkRenderingCore_AUTOINIT="3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)"
-  DEP_FILE = CMakeFiles/pcmat.dir/SimpleFakeIntensityPCPointMaterialBuilder.cpp.o.d
+  DEP_FILE = CMakeFiles/pcmat.dir/MockIntensityNoCorrectionPCPointMaterialBuilder.cpp.o.d
   FLAGS = -g
   INCLUDES = -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/include/pcl-1.10 -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/pcmat.dir
   OBJECT_FILE_DIR = CMakeFiles/pcmat.dir
 
-build CMakeFiles/pcmat.dir/FakeIntensityPCPointMaterialBuilder.cpp.o: CXX_COMPILER__pcmat_Debug /home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture/FakeIntensityPCPointMaterialBuilder.cpp || cmake_object_order_depends_target_pcmat
+build CMakeFiles/pcmat.dir/MockIntensityPCPointMaterialBuilder.cpp.o: CXX_COMPILER__pcmat_Debug /home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture/MockIntensityPCPointMaterialBuilder.cpp || cmake_object_order_depends_target_pcmat
   DEFINES = -DDISABLE_LIBUSB_1_0 -DDISABLE_OPENNI -DDISABLE_OPENNI2 -DDISABLE_PCAP -DDISABLE_PNG -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT="1(vtkRenderingContextOpenGL2)" -DvtkRenderingCore_AUTOINIT="3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)"
-  DEP_FILE = CMakeFiles/pcmat.dir/FakeIntensityPCPointMaterialBuilder.cpp.o.d
+  DEP_FILE = CMakeFiles/pcmat.dir/MockIntensityPCPointMaterialBuilder.cpp.o.d
+  FLAGS = -g
+  INCLUDES = -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/include/pcl-1.10 -I/usr/include/eigen3
+  OBJECT_DIR = CMakeFiles/pcmat.dir
+  OBJECT_FILE_DIR = CMakeFiles/pcmat.dir
+
+build CMakeFiles/pcmat.dir/PointXYZRGBMaterial.cpp.o: CXX_COMPILER__pcmat_Debug /home/haocheng/Documents/GitHub/PointCloudPhysicsMaterialTexture/PointXYZRGBMaterial.cpp || cmake_object_order_depends_target_pcmat
+  DEFINES = -DDISABLE_LIBUSB_1_0 -DDISABLE_OPENNI -DDISABLE_OPENNI2 -DDISABLE_PCAP -DDISABLE_PNG -Dqh_QHpointer -DvtkRenderingContext2D_AUTOINIT="1(vtkRenderingContextOpenGL2)" -DvtkRenderingCore_AUTOINIT="3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)"
+  DEP_FILE = CMakeFiles/pcmat.dir/PointXYZRGBMaterial.cpp.o.d
   FLAGS = -g
   INCLUDES = -I/usr/include/vtk-7.1 -I/usr/include/freetype2 -I/usr/include/pcl-1.10 -I/usr/include/eigen3
   OBJECT_DIR = CMakeFiles/pcmat.dir
@@ -121,7 +129,7 @@ build CMakeFiles/pcmat.dir/FakeIntensityPCPointMaterialBuilder.cpp.o: CXX_COMPIL
 #############################################
 # Link the static library libpcmat.a
 
-build libpcmat.a: CXX_STATIC_LIBRARY_LINKER__pcmat_Debug CMakeFiles/pcmat.dir/PCPointMaterial.cpp.o CMakeFiles/pcmat.dir/PCPointMaterialDirector.cpp.o CMakeFiles/pcmat.dir/PCPointMaterialBuilder.cpp.o CMakeFiles/pcmat.dir/PCViewer.cpp.o CMakeFiles/pcmat.dir/PCReader.cpp.o CMakeFiles/pcmat.dir/PCNormal.cpp.o CMakeFiles/pcmat.dir/SimpleFakeIntensityPCPointMaterialBuilder.cpp.o CMakeFiles/pcmat.dir/FakeIntensityPCPointMaterialBuilder.cpp.o
+build libpcmat.a: CXX_STATIC_LIBRARY_LINKER__pcmat_Debug CMakeFiles/pcmat.dir/PCPointMaterial.cpp.o CMakeFiles/pcmat.dir/PCPointMaterialDirector.cpp.o CMakeFiles/pcmat.dir/PCPointMaterialBuilder.cpp.o CMakeFiles/pcmat.dir/PCViewer.cpp.o CMakeFiles/pcmat.dir/PCReader.cpp.o CMakeFiles/pcmat.dir/PCNormal.cpp.o CMakeFiles/pcmat.dir/MockIntensityNoCorrectionPCPointMaterialBuilder.cpp.o CMakeFiles/pcmat.dir/MockIntensityPCPointMaterialBuilder.cpp.o CMakeFiles/pcmat.dir/PointXYZRGBMaterial.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = CMakeFiles/pcmat.dir
   POST_BUILD = :
