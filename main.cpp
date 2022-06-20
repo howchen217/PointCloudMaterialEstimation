@@ -29,6 +29,9 @@ int main(){
     pcl::copyPointCloud(*cloud_xyzrgb, *cloud_xyz);
     pcl::PointCloud<pcl::Normal>::Ptr cloud_normals = PCNormal::getPCNormals(cloud_xyz);
 
+    //view normal of a single point
+    PCViewer::viewPCPointNormal(cloud_xyz, cloud_normals, 1000);
+
     //make them into cloud with materials.
     pcl::PointCloud<PointXYZRGBMaterial>::Ptr cloud_with_material(new pcl::PointCloud<PointXYZRGBMaterial>);
 

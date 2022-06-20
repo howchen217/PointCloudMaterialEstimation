@@ -19,7 +19,7 @@ add_library(pcmat
         PCPointMaterialBuilder.h
         PCViewer.cpp
         PCViewer.h
-        PCReader.cpp 
+        PCReader.cpp
         PCReader.h
         PCNormal.cpp
         PCNormal.h

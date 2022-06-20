@@ -5,10 +5,47 @@
 
 #include "PCViewer.h"
 
+void PCViewer::viewPCPointNormal(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_xyz, pcl::PointCloud<pcl::Normal>::Ptr cloud_normals, int point_index){
+
+    // visualize point normal
+    pcl::visualization::PCLVisualizer viewer("Point Normal Viewer");
+    viewer.setBackgroundColor (0.1, 0.1, 0.1);
+    viewer.addCoordinateSystem (0.07f, "global");
+
+    //get indices of points that you wish to show
+    std::vector<int> point_indices = {point_index};
+    pcl::IndicesPtr indices(new std::vector <int>(point_indices));
+
+    //make it into another cloud
+    pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_of_a_point(new pcl::PointCloud<pcl::PointXYZ>);
+    pcl::copyPointCloud(*cloud_xyz, point_indices, *cloud_of_a_point);
+    pcl::PointCloud<pcl::Normal>::Ptr normal_of_a_point(new pcl::PointCloud<pcl::Normal>);
+    pcl::copyPointCloud(*cloud_normals, point_indices, *normal_of_a_point);
+
+    //set the point cloud color
+    pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> green(cloud_of_a_point, 0, 255, 0);
+    pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> red(cloud_xyz, 255, 0, 0);
+
+    //add to viewer
+    viewer.addPointCloud(cloud_of_a_point, green, "cloud of a point");
+    viewer.addPointCloud(cloud_xyz, red, "cloud");
+    viewer.addPointCloudNormals<pcl::PointXYZ,pcl::Normal>(cloud_of_a_point, normal_of_a_point, 1,  0.03, "cloud_normals");
+
+    //set point size
+    viewer.setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 10, "cloud of a point");
+
+    //viewer
+    while (!viewer.wasStopped ())
+    {
+        viewer.spinOnce ();
+    }
+}
+
+
 template <typename T>
 void PCViewer::viewCloud (T cloud) {
 
-    pcl::visualization::CloudViewer viewer("Simple XYZ Viewer");
+    pcl::visualization::CloudViewer viewer("Simple Cloud Viewer");
     viewer.showCloud(cloud);
     while (!viewer.wasStopped()) {
     }

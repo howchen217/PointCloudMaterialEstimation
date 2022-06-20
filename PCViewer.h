@@ -14,6 +14,7 @@
 #include <pcl/ml/kmeans.h>
 #include "PointXYZRGBMaterial.h"
 #include "Vector3.hpp"
+#include "PCNormal.h"
 
 /**
  * Utility class for point cloud viewing.
@@ -36,6 +37,13 @@ class PCViewer {
         template <typename T>
         static void viewCloud(T cloud);
 
+        /**
+         * \brief View the point normal of a specific point by index.
+         * @param cloud_xyz The input cloud.
+         * @param cloud_normals The cloud normals.
+         * @param point_index The point index.
+         */
+        static void viewPCPointNormal(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_xyz, pcl::PointCloud<pcl::Normal>::Ptr cloud_normals, int point_index);
 };
 
 
