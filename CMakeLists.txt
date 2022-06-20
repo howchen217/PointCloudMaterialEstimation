@@ -16,7 +16,18 @@ add_library(pcmat
         PCPointMaterialDirector.cpp
         PCPointMaterialDirector.h
         PCPointMaterialBuilder.cpp
-        PCPointMaterialBuilder.h PCViewer.cpp PCViewer.h PCReader.cpp PCReader.h PCNormal.cpp PCNormal.h MockIntensityNoCorrectionPCPointMaterialBuilder.cpp MockIntensityNoCorrectionPCPointMaterialBuilder.h MockIntensityPCPointMaterialBuilder.cpp MockIntensityPCPointMaterialBuilder.h PointXYZRGBMaterial.h)
+        PCPointMaterialBuilder.h
+        PCViewer.cpp
+        PCViewer.h
+        PCReader.cpp 
+        PCReader.h
+        PCNormal.cpp
+        PCNormal.h
+        MockIntensityNoCorrectionPCPointMaterialBuilder.cpp
+        MockIntensityNoCorrectionPCPointMaterialBuilder.h
+        MockIntensityPCPointMaterialBuilder.cpp
+        MockIntensityPCPointMaterialBuilder.h
+        PointXYZRGBMaterial.h)
 
 add_library(vector3
         Quaternion.cpp

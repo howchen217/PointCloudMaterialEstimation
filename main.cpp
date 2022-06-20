@@ -29,7 +29,7 @@ int main(){
     pcl::copyPointCloud(*cloud_xyzrgb, *cloud_xyz);
     pcl::PointCloud<pcl::Normal>::Ptr cloud_normals = PCNormal::getPCNormals(cloud_xyz);
 
-    //make them into cloud with materials. 
+    //make them into cloud with materials.
     pcl::PointCloud<PointXYZRGBMaterial>::Ptr cloud_with_material(new pcl::PointCloud<PointXYZRGBMaterial>);
 
     //k means preparation
