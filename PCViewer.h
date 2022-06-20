@@ -20,8 +20,19 @@
  */
 class PCViewer {
     public:
+        /**
+         * \brief Creates an RGB cloud with visualized material information.
+         * @param cloud_with_material The cloud of PointXYZRGBMaterial point type.
+         * @param centroids The centroids as a result of kmeans on material vectors.
+         * @return An RGBXYZ point cloud with every centroid cluster of a different color.
+         */
         static pcl::PointCloud<pcl::PointXYZRGB>::Ptr createVisualizedMaterialCloud(pcl::PointCloud<PointXYZRGBMaterial>::Ptr cloud_with_material, pcl::Kmeans::Centroids centroids);
 
+        /**
+         * \brief Show the input cloud.
+         * @tparam T The cloud type.
+         * @param cloud The input cloud.
+         */
         template <typename T>
         static void viewCloud(T cloud);
 

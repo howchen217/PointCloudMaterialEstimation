@@ -9,7 +9,6 @@
 #include <pcl/filters/extract_indices.h>
 #include <pcl/io/pcd_io.h>
 #include <pcl/ml/kmeans.h>
-#include <pcl/pcl_macros.h>
 
 #include <pcl/features/normal_3d.h>
 
@@ -30,7 +29,7 @@ int main(){
     pcl::copyPointCloud(*cloud_xyzrgb, *cloud_xyz);
     pcl::PointCloud<pcl::Normal>::Ptr cloud_normals = PCNormal::getPCNormals(cloud_xyz);
 
-    //make them into cloud with materials. normal no longer needed
+    //make them into cloud with materials. 
     pcl::PointCloud<PointXYZRGBMaterial>::Ptr cloud_with_material(new pcl::PointCloud<PointXYZRGBMaterial>);
 
     //k means preparation
@@ -43,7 +42,6 @@ int main(){
         auto point_xyzrgb = cloud_xyzrgb->points[i];
         pcl::Normal normal = cloud_normals->points[i];
 
-        //calculate the material
         //prepare data for material estimation
         Vector3 RGB(point_xyzrgb.r, point_xyzrgb.g, point_xyzrgb.b);
         Vector3 point_coordinate(point_xyzrgb.x, point_xyzrgb.y, point_xyzrgb.z);
@@ -86,16 +84,9 @@ int main(){
         delete builder;
     }
 
-
-    //check how many points weren't included
-    //point removal is unnecessary currently since material cloud does not even include them
-    //std::cout << "to be removed: "<< points_of_weird_intensity->indices.size() << std::endl;
-    std::cout << "original cloud has: " << cloud_xyzrgb->size() << " points,";
-    std::cout << "material cloud has: " << cloud_with_material->size() << " points.";
-
     cloud_normals.reset();
 
-    //kmeans
+    //kmeans, choose number of centroids
     int k = 1;
     pcl::Kmeans kmeans(kmeans_data.size(), 3); //3 is dimension of vector
     kmeans.setClusterSize(k);
@@ -117,22 +108,7 @@ int main(){
 
     cloud_with_material.reset();
 
-    //track centroid point counts to see which cluster is bigger
-    int cluster1_size = 0;
-    int cluster2_size = 0;
-    Vector3 cluster1_rgb = HSVtoRGB(360, 100, 100);
-    for (std::size_t i = 0; i < visualized_material_cloud->size (); ++i){
-        pcl::PointXYZRGB visualized_point = visualized_material_cloud->points[i];
-        if(visualized_point.r == cluster1_rgb[0] && visualized_point.g == cluster1_rgb[1] && visualized_point.b == cluster1_rgb[2]){
-            cluster1_size++;
-        } else {
-            cluster2_size++;
-        }
-    }
-    std::cout << "total points: " << visualized_material_cloud->size() << std::endl;
-    std::cout << "centroid 1 cluster size: " << cluster1_size << std::endl;
-    std::cout << "centroid 2 cluster size: " << cluster2_size << std::endl;
-
+    //save cloud
     pcl::io::savePCDFileASCII ("test_pcd.pcd", *visualized_material_cloud);
 
     //Display cloud
