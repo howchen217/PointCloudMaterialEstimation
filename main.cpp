@@ -16,10 +16,13 @@
 #include "MockIntensityNoCorrectionPCPointMaterialBuilder.h"
 #include "MockIntensityPCPointMaterialBuilder.h"
 #include "PointXYZRGBMaterial.h"
+#include <pcl/pcl_config.h>
 
 int main(){
+    //check pcl version
+    std::cout << PCL_VERSION_PRETTY << std::endl;
 
-    std::string filename = "/home/haocheng/Documents/PCD files/same color dif material/plastic_jar_no_lid.pcd";
+    std::string filename = "../sample pcd files/same color dif material/metal_plate.pcd";
 
     //load cloud
     pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_xyzrgb = PCReader::readPCDXYZRGBCloud(filename);

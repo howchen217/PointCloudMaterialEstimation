@@ -4,6 +4,11 @@ This library can calculate point cloud material, both when the point intensity i
 ## Library used
 Point Cloud Library https://pointclouds.org/
 
+At the time this repository was made, the version of the PCL library used was 1.10.0. 
+It was installed with command: 
+```
+$ sudo apt install libpcl-dev
+```
 Vector3 calculation library by Jimmy van den Berg https://github.com/jimmyberg/Vector3
 
 ##  How to calculate point material
